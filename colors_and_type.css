@@ -1,0 +1,198 @@
+/* ============================================================
+   CEEALAR — Colors & Type
+   The single source of truth for color and typography tokens.
+   Import this file before anything else.
+   ============================================================ */
+
+/* Brand fonts — self-hosted variable fonts. */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Brand palette ---------- */
+  /* Teal — primary. Structural color: fills, buttons, feature surfaces. */
+  --teal-900: #014652;   /* hover / emphasis */
+  --teal-700: #018498;   /* PRIMARY */
+  --teal-500: #2BA0B0;   /* accents, interactive states */
+  --teal-300: #63C5CE;   /* subtitle on teal */
+  --teal-100: #D3EBED;   /* background tint */
+
+  /* Gold — accent only. Type, edges, dividers. Never structural fills. */
+  --gold-700: #B08A3E;   /* hover for gold actions */
+  --gold-500: #D1A75E;   /* ACCENT */
+  --gold-300: #E5C896;   /* subtle backgrounds */
+
+  /* Cream — neutral surface. Teal pairs with cream, not white. */
+  --cream-50:  #FAF7F1;  /* page background */
+  --cream-100: #F5F0EA;  /* card surface */
+  --cream-200: #EBE3D6;  /* divider */
+
+  /* Ink — text. */
+  --ink-900: #1A1A1A;    /* body on cream */
+  --ink-700: #2D2D2D;    /* secondary */
+  --ink-500: #6E6E6E;    /* captions, muted */
+
+  --white: #FFFFFF;
+
+  /* ---------- Semantic aliases ---------- */
+  --fg-1: var(--ink-900);          /* primary text */
+  --fg-2: var(--ink-700);          /* secondary text */
+  --fg-muted: var(--ink-500);      /* captions */
+  --fg-inverse: var(--cream-100);  /* text on teal */
+  --fg-accent: var(--gold-500);    /* italic serif, eyebrows */
+
+  --bg-canvas: var(--cream-50);    /* page background */
+  --bg-card: var(--cream-100);     /* card surface */
+  --bg-feature: var(--teal-700);   /* teal feature blocks */
+  --bg-divider: var(--cream-200);
+
+  --border-default: var(--cream-200);
+  --border-accent: var(--gold-500);
+  --border-emphasis: var(--teal-700);
+
+  /* ---------- Type families ---------- */
+  --f-display: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --f-serif:   'Playfair Display', 'Garamond', 'Times New Roman', serif;
+  --f-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --f-mono:    'SF Mono', 'Menlo', 'Consolas', monospace;
+
+  /* ---------- Spacing (8px base) ---------- */
+  --s-0: 4px;
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-5: 48px;
+  --s-6: 64px;
+  --s-7: 96px;
+
+  /* ---------- Radii ---------- */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 1px 2px rgba(1,70,82,0.06);
+  --shadow-md: 0 4px 16px rgba(1,70,82,0.08);
+  --shadow-lg: 0 12px 32px rgba(1,70,82,0.12);
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --bp-mobile: 720px;
+}
+
+/* ============================================================
+   Base semantic type styles. Apply directly to h1, h2, p, etc.
+   ============================================================ */
+
+body {
+  font-family: var(--f-body);
+  background: var(--bg-canvas);
+  color: var(--fg-1);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+h2 {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+}
+h3 {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+h4 {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+p {
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fg-1);
+}
+
+/* Signature italic-serif accent inside a sans headline */
+h1 em, h2 em, h3 em,
+.t-display-xl em, .t-display-lg em, .t-display-md em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold-500);
+}
+
+/* ============================================================
+   Utility type classes (the full scale)
+   ============================================================ */
+.t-display-xl { font-family: var(--f-display); font-weight: 700; font-size: 56px; line-height: 1.05; letter-spacing: -1.5px; }
+.t-display-lg { font-family: var(--f-display); font-weight: 600; font-size: 40px; line-height: 1.10; letter-spacing: -0.8px; }
+.t-display-md { font-family: var(--f-display); font-weight: 600; font-size: 28px; line-height: 1.20; letter-spacing: -0.3px; }
+
+.t-serif-xl   { font-family: var(--f-serif); font-style: italic; font-weight: 500; font-size: 48px; line-height: 1.10; color: var(--gold-500); }
+.t-serif-lg   { font-family: var(--f-serif); font-style: italic; font-weight: 500; font-size: 32px; line-height: 1.20; color: var(--gold-500); }
+.t-serif-md   { font-family: var(--f-serif); font-style: italic; font-weight: 500; font-size: 22px; line-height: 1.40; color: var(--gold-500); }
+
+.t-body-lg    { font-family: var(--f-body); font-weight: 400; font-size: 18px; line-height: 1.6; }
+.t-body-md    { font-family: var(--f-body); font-weight: 400; font-size: 16px; line-height: 1.6; }
+.t-body-sm    { font-family: var(--f-body); font-weight: 400; font-size: 14px; line-height: 1.5; }
+
+.t-eyebrow,
+.t-caps {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-500);
+  line-height: 1;
+}
+
+.t-mono { font-family: var(--f-mono); font-size: 13px; }
+
+/* Text color utilities */
+.fg-1 { color: var(--fg-1); }
+.fg-2 { color: var(--fg-2); }
+.fg-muted { color: var(--fg-muted); }
+.fg-inverse { color: var(--fg-inverse); }
+.fg-accent { color: var(--gold-500); }
+.fg-teal { color: var(--teal-700); }
