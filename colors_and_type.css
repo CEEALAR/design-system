@@ -1,7 +1,10 @@
 /* ============================================================
-   CEEALAR — Colors & Type
+   CEEALAR — Colors & Type  (v0.3 — Pulse-aligned, May 2026)
    The single source of truth for color and typography tokens.
    Import this file before anything else.
+
+   For motion, shadow, gradient, and editorial utilities,
+   also import `effects-and-motion.css`.
    ============================================================ */
 
 /* Brand fonts — self-hosted variable fonts. */
@@ -31,28 +34,36 @@
 }
 
 :root {
-  /* ---------- Brand palette ---------- */
+  /* ---------- Brand palette ----------
+     Aligned with CEEALAR Pulse v1 (web). Canva sources from v0.2 may now
+     drift; web is canonical for digital surfaces.                         */
+
   /* Teal — primary. Structural color: fills, buttons, feature surfaces. */
-  --teal-900: #014652;   /* hover / emphasis */
-  --teal-700: #018498;   /* PRIMARY */
-  --teal-500: #2BA0B0;   /* accents, interactive states */
-  --teal-300: #63C5CE;   /* subtitle on teal */
-  --teal-100: #D3EBED;   /* background tint */
+  --teal-deep: #0B5953;   /* gradient companion, deep hover */
+  --teal-900:  #014652;   /* reserved — legacy dark teal */
+  --teal-700:  #0F766E;   /* PRIMARY */
+  --teal-soft: #14958B;   /* gradient companion, lighter primary */
+  --teal-500:  #2BA0B0;   /* accents, interactive states */
+  --teal-300:  #63C5CE;   /* subtitle on teal */
+  --teal-100:  #D3EBED;   /* background tint */
 
   /* Gold — accent only. Type, edges, dividers. Never structural fills. */
-  --gold-700: #B08A3E;   /* hover for gold actions */
-  --gold-500: #D1A75E;   /* ACCENT */
-  --gold-300: #E5C896;   /* subtle backgrounds */
+  --gold-deep: #B8870E;   /* gradient companion — deepest gold */
+  --gold-700:  #B08A3E;   /* hover for gold actions (text contexts) */
+  --gold-500:  #D4A017;   /* ACCENT */
+  --gold-soft: #E8B73E;   /* softer accent, gradient companion */
+  --gold-300:  #E5C896;   /* subtle backgrounds */
 
   /* Cream — neutral surface. Teal pairs with cream, not white. */
-  --cream-50:  #FAF7F1;  /* page background */
-  --cream-100: #F5F0EA;  /* card surface */
-  --cream-200: #EBE3D6;  /* divider */
+  --cream-50:   #FAF7F0;  /* page background */
+  --cream-100:  #F5F0EA;  /* card surface */
+  --cream-200:  #EBE3D6;  /* divider */
+  --cream-deep: #F4EFE3;  /* subtle warm tint */
 
   /* Ink — text. */
-  --ink-900: #1A1A1A;    /* body on cream */
-  --ink-700: #2D2D2D;    /* secondary */
-  --ink-500: #6E6E6E;    /* captions, muted */
+  --ink-900: #1A1A1A;     /* body on cream */
+  --ink-700: #2D2D2D;     /* secondary */
+  --ink-500: #6E6E6E;     /* captions, muted */
 
   --white: #FFFFFF;
 
@@ -89,15 +100,11 @@
   --s-7: 96px;
 
   /* ---------- Radii ---------- */
-  --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 20px;
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   20px;
+  --r-xl:   32px;   /* hero header / large feature surfaces */
   --r-pill: 999px;
-
-  /* ---------- Shadows ---------- */
-  --shadow-sm: 0 1px 2px rgba(1,70,82,0.06);
-  --shadow-md: 0 4px 16px rgba(1,70,82,0.08);
-  --shadow-lg: 0 12px 32px rgba(1,70,82,0.12);
 
   /* ---------- Layout ---------- */
   --container-max: 1200px;
