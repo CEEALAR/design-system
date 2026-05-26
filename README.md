@@ -5,10 +5,13 @@ The brand and visual system for the **Centre for Enabling EA Learning & Research
 This repo is the engineering source of truth — tokens, fonts, and logo files —
 maintained alongside a working design environment where the system evolves.
 
-**Current version: 0.3.0** — aligned with CEEALAR Pulse (May 2026).
-The v0.2 palette was extracted from Canva sources; v0.3 reflects the deeper,
-less-saturated teal and warmer gold used in production web work. Canva sources
-may now drift from web — **web is canonical for digital surfaces**.
+**Current version: 0.4.0** — adds restrained, editorial scroll motion.
+v0.3 reflected the deeper, less-saturated teal and warmer gold used in
+production web work (web is canonical for digital surfaces; Canva sources may
+drift). v0.4 adds a scroll-reveal system (`.reveal-enabled` + `.is-visible`),
+an opt-in staggered container (`[data-reveal-stagger]`), and a hero mesh glow
+(`.hero-mesh`), plus reference `ScrollReveal` and `CountUp` components. All
+motion is reduced-motion safe and degrades to fully-visible content with no JS.
 
 ## Contents
 
