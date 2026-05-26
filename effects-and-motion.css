@@ -222,22 +222,3 @@
     transition: none !important;
   }
 }
-
-/* ============================================================
-   Hero mesh  (v0.4)
-   A whisper of the brand mesh-gradient behind a hero, for warmth
-   and depth without imagery. Apply `.hero-mesh` to a positioned
-   section; the glow sits behind its content.
-   ============================================================ */
-.hero-mesh {
-  position: relative;
-  isolation: isolate;
-}
-.hero-mesh::before {
-  content: "";
-  position: absolute;
-  inset: -10% -5% 0;
-  z-index: -1;
-  background: var(--gradient-mesh);
-  pointer-events: none;
-}
