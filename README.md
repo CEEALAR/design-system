@@ -8,10 +8,12 @@ maintained alongside a working design environment where the system evolves.
 **Current version: 0.4.0** — adds restrained, editorial scroll motion.
 v0.3 reflected the deeper, less-saturated teal and warmer gold used in
 production web work (web is canonical for digital surfaces; Canva sources may
-drift). v0.4 adds a scroll-reveal system (`.reveal-enabled` + `.is-visible`)
-and an opt-in staggered container (`[data-reveal-stagger]`), plus reference
-`ScrollReveal` and `CountUp` components. All motion is reduced-motion safe and
-degrades to fully-visible content with no JS.
+drift). v0.4 adds a scroll-reveal system (`.reveal-enabled` + `.is-visible`),
+an opt-in staggered container (`[data-reveal-stagger]`), a desktop-only photo
+hover-zoom (`.photo-zoom`), and a cross-page crossfade via the View Transitions
+API, plus reference `ScrollReveal`, `CountUp`, and `ViewTransitions` components.
+All motion is reduced-motion safe and degrades to fully-visible content with no
+JS (the crossfade also no-ops where the View Transitions API is unsupported).
 
 ## Contents
 

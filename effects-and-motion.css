@@ -222,3 +222,47 @@
     transition: none !important;
   }
 }
+
+/* ============================================================
+   Photo hover-zoom  (v0.4)
+   A slow, subtle zoom on documentary photos on hover. Desktop pointers
+   only (gated behind hover: hover) and disabled under reduced-motion. The
+   photo container must clip with overflow: hidden so the scaled image
+   stays within its frame.
+   ============================================================ */
+@media (hover: hover) {
+  .photo-zoom img {
+    transition: transform 600ms var(--ease-out-quart);
+    will-change: transform;
+  }
+  .photo-zoom:hover img {
+    transform: scale(1.04);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-zoom img,
+  .photo-zoom:hover img {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Cross-page fade  (v0.4)
+   A short crossfade between routes via the View Transitions API. The
+   browser no-ops this where unsupported (Safari < 18, Firefox), so it is
+   pure progressive enhancement. Disabled under reduced-motion. Pair with a
+   navigation interceptor that runs router navigation inside
+   document.startViewTransition (see ui-kit/website/ViewTransitions.jsx).
+   ============================================================ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--ease-out-quart);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
