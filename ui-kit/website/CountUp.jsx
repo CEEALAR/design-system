@@ -22,11 +22,14 @@ function parse(value) {
 }
 
 export function CountUp({ value, durationMs = 1100 }) {
-  const parsed = parse(value);
   const ref = useRef(null);
   const [display, setDisplay] = useState(value);
 
+  // Parse inside the effect and depend on the stable `value` string, not a
+  // freshly-parsed object (a new reference each render would re-run the effect
+  // every frame and restart the count, causing flicker).
   useEffect(() => {
+    const parsed = parse(value);
     if (!parsed) return;
     const node = ref.current;
     if (!node) return;
@@ -41,6 +44,7 @@ export function CountUp({ value, durationMs = 1100 }) {
       parsed.suffix;
 
     let raf = 0;
+    let snap = 0;
     let started = false;
     const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
@@ -53,6 +57,12 @@ export function CountUp({ value, durationMs = 1100 }) {
       };
       setDisplay(format(0));
       raf = requestAnimationFrame(tick);
+      // Guarantee the final value even if rAF is throttled or paused, so the
+      // number can never freeze mid-count.
+      snap = window.setTimeout(
+        () => setDisplay(format(parsed.target)),
+        durationMs + 150,
+      );
     };
 
     const io = new IntersectionObserver(
@@ -69,8 +79,9 @@ export function CountUp({ value, durationMs = 1100 }) {
     return () => {
       io.disconnect();
       cancelAnimationFrame(raf);
+      clearTimeout(snap);
     };
-  }, [parsed, durationMs]);
+  }, [value, durationMs]);
 
   return (
     <span ref={ref} suppressHydrationWarning>
